@@ -1,11 +1,14 @@
-"""
- Constructs network architecture for a single task
- Copyright (c) 2019 Samsung Electronics Co., Ltd. All Rights Reserved
- If you use this code, please cite the following paper:
- Mahmoud Afifi and Michael S Brown. Deep White-Balance Editing. In CVPR, 2020.
-"""
-__author__ = "Mahmoud Afifi"
-__credits__ = ["Mahmoud Afifi"]
+# -*- coding:utf-8 -*-
+# @FileName  :endoir_model
+# @Time      :2023/11/4 10:09
+# @Author    :CJL
+from .endoir_blocks import *
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torchvision
+import math
+
 
 from .endoir_blocks import *
 import torch
