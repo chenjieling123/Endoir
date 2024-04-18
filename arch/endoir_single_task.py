@@ -8,6 +8,86 @@ __author__ = "Mahmoud Afifi"
 __credits__ = ["Mahmoud Afifi"]
 
 from .endoir_blocks import *
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torchvision
+import math
+
+class ConvolutionalBlock(nn.Module):
+    """
+    卷积模块,由卷积层, BN归一化层, 激活层构成.
+    """
+
+    def __init__(self, in_channels, out_channels, kernel_size, stride=1, batch_norm=False, activation=None):
+        """
+        :参数 in_channels: 输入通道数
+        :参数 out_channels: 输出通道数
+        :参数 kernel_size: 核大小
+        :参数 stride: 步长
+        :参数 batch_norm: 是否包含BN层
+        :参数 activation: 激活层类型; 如果没有则为None
+        """
+        super(ConvolutionalBlock, self).__init__()
+
+        if activation is not None:
+            activation = activation.lower()
+            assert activation in {'prelu', 'leakyrelu', 'tanh'}
+
+        # 层列表
+        layers = list()
+
+        # 1个卷积层
+        layers.append(
+            nn.Conv2d(in_channels=in_channels, out_channels=out_channels, kernel_size=kernel_size, stride=stride,
+                      padding=kernel_size // 2))
+
+        # 1个BN归一化层
+        if batch_norm is True:
+            layers.append(nn.BatchNorm2d(num_features=out_channels))
+
+        # 1个激活层
+        if activation == 'prelu':
+            layers.append(nn.PReLU())
+        elif activation == 'leakyrelu':
+            layers.append(nn.LeakyReLU(0.2))
+        elif activation == 'tanh':
+            layers.append(nn.Tanh())
+
+        # 合并层
+        self.conv_block = nn.Sequential(*layers)
+
+    def forward(self, input):
+        """
+        前向传播
+
+        :参数 input: 输入图像集，张量表示，大小为 (N, in_channels, w, h)
+        :返回: 输出图像集，张量表示，大小为(N, out_channels, w, h)
+        """
+        output = self.conv_block(input)
+
+        return output
+class DoubleConv(nn.Module):
+    """
+    卷积模块
+    (convolution => [BN] => ReLU) * 2
+    """
+
+    def __init__(self, in_channels, out_channels, mid_channels=None):
+        super().__init__()
+        if not mid_channels:
+            mid_channels = out_channels
+        self.double_conv = nn.Sequential(
+            nn.Conv2d(in_channels, mid_channels, kernel_size=3, padding=1, bias=False),
+            nn.BatchNorm2d(mid_channels),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(mid_channels, out_channels, kernel_size=3, padding=1, bias=False),
+            nn.BatchNorm2d(out_channels),
+            nn.ReLU(inplace=True)
+        )
+
+    def forward(self, x):
+        return self.double_conv(x)
 
 
 class deepWBnet(nn.Module):
