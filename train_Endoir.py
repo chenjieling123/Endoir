@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-# @FileName  :train_unetgan.py
+# @FileName  :train_Endoir.py
 # @Time      :2023/11/2 10:20
 # @Author    :CJL
 
