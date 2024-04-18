@@ -1,12 +1,7 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-'''
-@文件        :test.py
-@说明        :执行单张样本测试
-@时间        :2020/02/23 12:14:50
-@作者        :钱彬
-@版本        :1.0
-'''
+# -*- coding:utf-8 -*-
+# @FileName  :aberration_recovery.py
+# @Time      :2023/11/17 9:21
+# @Author    :CJL
 
 from utils import *
 from torch import nn
