@@ -5,7 +5,7 @@
 
 from utils import *
 from torch import nn
-from models import SRResNet, Generator
+from arch.endoir_model import *
 import time
 from PIL import Image
 
@@ -22,9 +22,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 if __name__ == '__main__':
     # 预训练模型
-    #srgan_checkpoint = "./results/garnn-rawData/deepWBNet/checkpoint_deepWBNet16000.pth"
+    srgan_checkpoint = "./results/garnn-rawData/deepWBNet/checkpoint_deepWBNet16000.pth"
     #srgan_checkpoint = "./results/garnn-rawData/wbgan/checkpoint_wbgan_7000.pth"
-    srgan_checkpoint = "./results/upper_gi_hyper_kvasir_all/srgan/checkpoint_srgan_1400.pth"
 
 
     # srresnet_checkpoint = "./results/checkpoint_srresnet.pth"
