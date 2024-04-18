@@ -4,13 +4,14 @@
 - cuda11.7
 
 ## Train and Test
-  '''python
-  python train_model.py 
-  python train_Endoir.py
-  python test.py
-  '''
+```python
+ python train_model.py 
+ python train_Endoir.py
+ python test.py
+```
+
 
 ## Eval
- '''python
+```python
  python eval.py
- ''' 
+```
