@@ -156,7 +156,7 @@ class Generator(nn.Module):
 
 class Discriminator(nn.Module):
     """
-    SRGAN判别器
+    判别器
     """
 
     def __init__(self, kernel_size=3, n_channels=64, n_blocks=8, fc_size=1024):
