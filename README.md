@@ -3,10 +3,14 @@
 - pytorch 2.0.1
 - cuda11.7
 
-  ## Train and Test
-  ''' python train_model.py '''
-  ''' python train_Endoir.py''' 
-  ''' python test.py''' 
+## Train and Test
+  '''python
+  python train_model.py 
+  python train_Endoir.py
+  python test.py
+  '''
 
-  ## Eval
- '''  python eval.py''' 
+## Eval
+ '''python
+ python eval.py
+ ''' 
