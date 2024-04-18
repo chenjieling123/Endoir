@@ -9,7 +9,7 @@ import torch
 from torch import nn
 from torchvision.utils import make_grid
 from torch.utils.tensorboard import SummaryWriter
-from arch.deep_wb_model import *
+from arch.endoir_model import *
 import arch.splitNetworks as splitter
 from datasets import SRDataset
 from utils import *
