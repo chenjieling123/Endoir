@@ -7,7 +7,7 @@ from utils import *
 from torch import nn
 from skimage.metrics import peak_signal_noise_ratio, structural_similarity,mean_squared_error
 from datasets import SRDataset
-from models import SRResNet,Generator
+from arch.endoir_model import *
 import time
 
 # 模型参数
