@@ -9,7 +9,7 @@ import torch
 from torch import nn
 from torchvision.utils import make_grid
 from torch.utils.tensorboard import SummaryWriter
-from arch.deep_wb_model import *
+from arch.endoir_model import *
 from datasets import SRDataset
 from utils import *
 import time
@@ -27,13 +27,12 @@ data_folder = './data/'    # 数据存放路径
 crop_size = 96  # 高分辨率图像裁剪尺寸
 scaling_factor = 1  # 放大比例
 
-# 生成器模型参数(与SRResNet相同)
+# 生成器模型参数
 large_kernel_size_g = 9  # 第一层卷积和最后一层卷积的核大小
 small_kernel_size_g = 3  # 中间层卷积的核大小
 n_channels_g = 64  # 中间层通道数
 n_blocks_g = 16  # 残差模块数量
-srresnet_checkpoint = "./results/deepWBNet/checkpoint_deepWBNet2000.pth"  # 预训练的SRResNet模型，用来初始化
-# 预训练的unet,用来初始化
+srresnet_checkpoint = "./results/deepWBNet/checkpoint_deepWBNet2000.pth"  # 预训练的模型，用来初始化
 # 判别器模型参数
 kernel_size_d = 3  # 所有卷积模块的核大小
 n_channels_d = 64  # 第1层卷积模块的通道数, 后续每隔1个模块通道数翻倍
