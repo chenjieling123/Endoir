@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-# @FileName  :gaussian.py
+# @FileName  :endoir_blocks.py
 # @Time      :2023/11/2 10:20
 # @Author    :CJL
 import torch
